@@ -1,32 +1,18 @@
 import React, { useState } from 'react';
-import { Image, Text, View, StyleSheet, Dimensions, TouchableHighlight  } from "react-native";
-
-import pic from "./assets/icon.png"
-import other from "./assets/splash.png"
-
-function ColorButton({ backgroundColor, onPress = f => f }){
-  return(
-    <TouchableHighlight onPress={() => onPress(backgroundColor)} underlayColor="orange" style={styles.button}>
-
-        <View style={styles.row}>
-        <View  style={[styles.sample, { backgroundColor }]} />
-          <Text style={styles.buttonText}>{backgroundColor}</Text>
-        </View> 
-      </TouchableHighlight>
-  )
-} 
+import { View, StyleSheet  } from "react-native";
+import ColorButton from './components/ColorButton'
 
 export default function App() {
 const [backgroundColor, setBackgroundColor] = useState("blue");
   return (
-    <View style={[styles.container, { backgroundColor}]}>
+    <View style={[styles.container, { backgroundColor }]}>
       <ColorButton backgroundColor="red" onPress={setBackgroundColor}/>
       <ColorButton backgroundColor="green" onPress={setBackgroundColor}/>
       <ColorButton backgroundColor="blue" onPress={setBackgroundColor}/>
       <ColorButton backgroundColor="yellow" onPress={setBackgroundColor}/>
       <ColorButton backgroundColor="purple" onPress={setBackgroundColor}/>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -59,12 +45,6 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: "row",
     alignItems: "center"
-  },
-  image: {
-    flex: 1,
-    borderRadius: 50,
-    margin: 10,
-    width: Dimensions.get("window").width
   },
   text: {
     textAlign: "center",
