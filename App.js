@@ -4,16 +4,27 @@ import { Image, Text, View, StyleSheet, Dimensions, TouchableHighlight  } from "
 import pic from "./assets/icon.png"
 import other from "./assets/splash.png"
 
+function ColorButton({ backgroundColor, onPress = f => f }){
+  return(
+    <TouchableHighlight onPress={() => onPress(backgroundColor)} underlayColor="orange" style={styles.button}>
+
+        <View style={styles.row}>
+        <View  style={[styles.sample, { backgroundColor }]} />
+          <Text style={styles.buttonText}>{backgroundColor}</Text>
+        </View> 
+      </TouchableHighlight>
+  )
+} 
+
 export default function App() {
 const [backgroundColor, setBackgroundColor] = useState("blue");
   return (
     <View style={[styles.container, { backgroundColor}]}>
-      <TouchableHighlight onPress={() => setBackgroundColor("yellow")} underlayColor="orange" style={styles.button}>
-        <View style={styles.row}>
-        <View  style={[styles.sample, { backgroundColor: "yellow"}]} />
-          <Text style={styles.buttonText}>yellow</Text>
-        </View> 
-      </TouchableHighlight>
+      <ColorButton backgroundColor="red" onPress={setBackgroundColor}/>
+      <ColorButton backgroundColor="green" onPress={setBackgroundColor}/>
+      <ColorButton backgroundColor="blue" onPress={setBackgroundColor}/>
+      <ColorButton backgroundColor="yellow" onPress={setBackgroundColor}/>
+      <ColorButton backgroundColor="purple" onPress={setBackgroundColor}/>
     </View>
   )
 }
