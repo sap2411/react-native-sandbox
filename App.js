@@ -1,17 +1,30 @@
 import React, { useState } from 'react';
-import { View, StyleSheet  } from "react-native";
+import { View, StyleSheet, FlatList  } from "react-native";
 import ColorButton from './components/ColorButton'
+
+const defaultColors = [
+  {"id":'dsf', "color": "pink"},
+  {"id":'a34f', "color": "yellow"},
+  {"id":'asdf', "color": "blue"},
+  {"id":'q34gq', "color": "red"},
+  {"id":'dsf', "color": "green"},
+  {"id":'a34f', "color": "purple"},
+  {"id":'asdf', "color": "orange"},
+  {"id":'q34gq', "color": "brown"}
+]
 
 export default function App() {
 const [backgroundColor, setBackgroundColor] = useState("blue");
   return (
-    <View style={[styles.container, { backgroundColor }]}>
-      <ColorButton backgroundColor="red" onPress={setBackgroundColor}/>
-      <ColorButton backgroundColor="green" onPress={setBackgroundColor}/>
-      <ColorButton backgroundColor="blue" onPress={setBackgroundColor}/>
-      <ColorButton backgroundColor="yellow" onPress={setBackgroundColor}/>
-      <ColorButton backgroundColor="purple" onPress={setBackgroundColor}/>
-    </View>
+    <FlatList style={[styles.container, { backgroundColor }]}
+    data={defaultColors}
+    renderItem={({ item}) => {
+      return (
+        <ColorButton key={item.id} backgroundColor={item.color} onPress={setBackgroundColor}/>
+      )
+    }}
+    />
+
   );
 }
 
@@ -19,8 +32,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     display: "flex",
-    justifyContent: "center",
-    alignItems: "center"
+    paddingTop: 30
   },
   button: {
     margin: 10,
