@@ -4,18 +4,18 @@ import ColorButton from './ColorButton'
 import ColorForm from "./ColorForm.js"
 import { useColors } from '../hooks.'
 
-export default function ColorList() {
+export default function ColorList({ navigation }) {
   const [backgroundColor, setBackgroundColor] = useState("blue");
   const { colors, addColor } = useColors()
 
   return (
     <>
     <ColorForm onNewColor={addColor}/>
-    <FlatList style={[styles.container, { backgroundColor }]}
+    <FlatList style={[styles.container]}
     data={colors}
     renderItem={({ item }) => {
       return (
-        <ColorButton key={item.id} backgroundColor={item.color} onPress={setBackgroundColor}/>
+        <ColorButton key={item.id} onPress={() => navigation.navigate("Details")} backgroundColor={item.color}/>
       )
     }}
     />
