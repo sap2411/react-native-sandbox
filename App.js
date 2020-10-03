@@ -1,12 +1,12 @@
 import React from 'react';
-import {Text, View} from "react-native";
+import {Button, Text, View, ActivityIndicator, ProgressViewIOS} from "react-native";
 
 export default function App() {
   return (
     <View style={{ padding: 50 }}>
-      <Text>Hello World!</Text>
-      <Text>Woah</Text> 
-      <Text>Green</Text>
+      <ProgressViewIOS progress={0.5}/>
+      <ActivityIndicator size="large" color="#61DBFB" />
+      <Button title="click me" />
     </View>
   )
 }
