@@ -1,39 +1,40 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, FlatList  } from "react-native";
 import ColorButton from './components/ColorButton'
+import ColorForm from "./components/ColorForm.js"
 
 const defaultColors = [
   {"id":'dsf', "color": "pink"},
   {"id":'a34f', "color": "yellow"},
   {"id":'asdf', "color": "blue"},
-  {"id":'q34gq', "color": "red"},
-  {"id":'dsf', "color": "green"},
-  {"id":'a34f', "color": "purple"},
-  {"id":'asdf', "color": "orange"},
-  {"id":'q34gq', "color": "brown"}
+  {"id":'ddsf', "color": "green"},
+  {"id":'a3a4f', "color": "purple"},
+  {"id":'asfdf', "color": "orange"},
+  {"id":'q345gq', "color": "brown"}
 ]
 
 export default function App() {
 const [backgroundColor, setBackgroundColor] = useState("blue");
   return (
+    <>
+    <ColorForm onNewColor={newColor => {}}/>
     <FlatList style={[styles.container, { backgroundColor }]}
     data={defaultColors}
-    renderItem={({ item}) => {
+    renderItem={({ item }) => {
       return (
         <ColorButton key={item.id} backgroundColor={item.color} onPress={setBackgroundColor}/>
       )
     }}
     />
-
+    </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    display: "flex",
-    paddingTop: 30
-  },
+    display: "flex"
+    },
   button: {
     margin: 10,
     padding: 10,
