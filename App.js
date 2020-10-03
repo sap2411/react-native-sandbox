@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Image, Text, View, StyleSheet, Dimensions  } from "react-native";
+import { Image, Text, View, StyleSheet, Dimensions, TouchableHighlight  } from "react-native";
 
 import pic from "./assets/icon.png"
 import other from "./assets/splash.png"
@@ -8,8 +8,12 @@ export default function App() {
 const [backgroundColor, setBackgroundColor] = useState("blue");
   return (
     <View style={[styles.container, { backgroundColor}]}>
-      <Text onPress={() => setBackgroundColor("green")} style={styles.button}>green</Text>
-      <Text onPress={() => setBackgroundColor("red")} style={styles.button}>red</Text>
+      <TouchableHighlight onPress={() => setBackgroundColor("yellow")} underlayColor="orange" style={styles.button}>
+        <View style={styles.row}>
+        <View  style={[styles.sample, { backgroundColor: "yellow"}]} />
+          <Text style={styles.buttonText}>yellow</Text>
+        </View> 
+      </TouchableHighlight>
     </View>
   )
 }
@@ -22,13 +26,17 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   button: {
-    fontSize: 30,
     margin: 10,
     padding: 10,
     borderWidth: 2,
     borderRadius: 10,
-    width: 90
-    },
+    alignSelf: "stretch",
+    backgroundColor: "rgba(255,255,255, .8)"
+  },
+  buttonText: {
+      fontSize: 30,
+      textAlign: "center"
+  },
   page: {
     flex: 1,
     flexDirection: "row",
@@ -36,6 +44,10 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     marginTop: 40,
     backgroundColor: "#DDD"
+  },
+  row: {
+    flexDirection: "row",
+    alignItems: "center"
   },
   image: {
     flex: 1,
@@ -55,5 +67,12 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
     backgroundColor: "red",
     color: "yellow"
-  } 
+  },
+  sample: {
+    height: 20,
+    width: 20,
+    margin: 5,
+    borderRadius: 10,
+    backgroundColor: "white"
+  }
 })
