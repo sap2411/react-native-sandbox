@@ -1,82 +1,18 @@
-import React, { useState } from 'react';
-import { View, StyleSheet, FlatList  } from "react-native";
-import ColorButton from './components/ColorButton'
-import ColorForm from "./components/ColorForm.js"
+import React from 'react';
+import ColorList from './components/ColorList'
+import ColorDetails from './components/ColorDetails'
+import { NavigationContainer } from "@react-navigation/native"
+import { createStackNavigator } from "@react-navigation/stack"
 
-const defaultColors = [
-  {"id":'dsf', "color": "pink"},
-  {"id":'a34f', "color": "yellow"},
-  {"id":'asdf', "color": "blue"},
-  {"id":'ddsf', "color": "green"},
-  {"id":'a3a4f', "color": "purple"},
-  {"id":'asfdf', "color": "orange"},
-  {"id":'q345gq', "color": "brown"}
-]
+const { Navigator, Screen } = createStackNavigator();
 
-export default function App() {
-const [backgroundColor, setBackgroundColor] = useState("blue");
-  return (
-    <>
-    <ColorForm onNewColor={newColor => {}}/>
-    <FlatList style={[styles.container, { backgroundColor }]}
-    data={defaultColors}
-    renderItem={({ item }) => {
-      return (
-        <ColorButton key={item.id} backgroundColor={item.color} onPress={setBackgroundColor}/>
-      )
-    }}
-    />
-    </>
-  );
+export default function App(){
+  return(
+    <NavigationContainer>
+      <Navigator>
+        <Screen name="Home" component={ColorList} />
+        <Screen name="Details" component={ColorDetails} />
+      </Navigator>
+    </NavigationContainer>
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    display: "flex"
-    },
-  button: {
-    margin: 10,
-    padding: 10,
-    borderWidth: 2,
-    borderRadius: 10,
-    alignSelf: "stretch",
-    backgroundColor: "rgba(255,255,255, .8)"
-  },
-  buttonText: {
-      fontSize: 30,
-      textAlign: "center"
-  },
-  page: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "flex-start",
-    marginTop: 40,
-    backgroundColor: "#DDD"
-  },
-  row: {
-    flexDirection: "row",
-    alignItems: "center"
-  },
-  text: {
-    textAlign: "center",
-    fontSize: 22,
-    color: "red",
-    backgroundColor: "yellow",
-    margin: 10,
-    padding: 5
-  },
-  selectedText: {
-    alignSelf: "flex-end",
-    backgroundColor: "red",
-    color: "yellow"
-  },
-  sample: {
-    height: 20,
-    width: 20,
-    margin: 5,
-    borderRadius: 10,
-    backgroundColor: "white"
-  }
-})
