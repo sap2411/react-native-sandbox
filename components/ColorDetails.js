@@ -1,17 +1,20 @@
 import React from 'react';
 import { View, Text, StyleSheet  } from "react-native";
 
-export default function ColorDetails() {
+export default function ColorDetails({ route }) {
+const { color } = route.params
   return (
-    <View style={styles.conatiner}>
-        <Text>Color Details</Text>
+    <View style={styles.container}>
+        <Text>Color Details: { route.params.color }</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    display: "flex"
+        flex: 1,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
     }
 })

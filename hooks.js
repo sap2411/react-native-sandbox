@@ -20,12 +20,11 @@ export const useColors = () => {
 
     useEffect(() => {
         AsyncStorage.setItem("@ColorListStore:Colors", JSON.stringify(colors));
-
     }, [colors])
     
     const addColor = color => {
-    const newColor = { id: generate(), color }
-    setColors([ newColor, ...colors ])
-    return { colors, addColor}
-  }
+        const newColor = { id: generate(), color }
+        setColors([ newColor, ...colors ])
+    };
+    return { colors, addColor }
 }
