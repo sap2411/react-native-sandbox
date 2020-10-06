@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet  } from "react-native";
 import Color from "color"
+
 export default function ColorDetails({ route }) {
 const { color: name } = route.params
 const color = Color(name)
