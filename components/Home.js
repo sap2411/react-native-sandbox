@@ -14,9 +14,11 @@ export default function Home(){
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: "row",
+        backgroundColor: "white",
+        flex: 1,
+        display: "flex",
         alignItems: "center",
-        backgroundColor: "white"
+        justifyContent: "center"
     },
     buttonText: {
         fontSize: 30,
